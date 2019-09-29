@@ -1,0 +1,30 @@
+/* miniprogram/pages/weather/weather.wxss */
+page{
+    width: 100%;
+    height: 100%;
+}
+.weatherwrap{
+    width: 100%;
+    height: 100%;
+    /* background: linear-gradient( #8b92d5 -20%, #848944 120%); */
+    /* background: linear-gradient( #050505 -20%, #0f0f0f 120%); */
+    background: linear-gradient( #3a86a4 -20%, #ffffff 120%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+}
+.cond_txt{
+    font-size: 80rpx;
+}
+.weathericon{
+    width: 100rpx;
+    height: 100rpx;
+    /* background: #ffffff; */
+}
+.tmp{
+    font-size: 120rpx;
+}
+.loc{
+    font-size: 50rpx
+}

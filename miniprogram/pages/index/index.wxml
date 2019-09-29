@@ -1,2 +1,10 @@
-<!--miniprogram/pages/index/index.wxml-->
-<text>miniprogram/pages/index/index.wxml</text>
+<!-- miniprogram/pages/index/index.wxml -->
+<view class="temwrap">
+    <view class="bg">
+       <image class="bgmimg" src="../../images/1.jpg" mode="aspectFill"></image>
+    </view>
+    <view class="topinfo">
+       <image class="zhi" src="../../images/zhi.jpg"></image>
+    </view>
+    <audio class="myvideo" poster="{{poster}}" name="{{name}}" author="{{author}}" src="{{src}}" id="myAudio" controls loop autoPlay></audio>
+</view>

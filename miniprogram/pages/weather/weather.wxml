@@ -1,0 +1,11 @@
+<!-- miniprogram/pages/weather/weather.wxml -->
+<view class="weatherwrap">
+    <view class="tmpinfo">
+        <view class="cond_txt">
+            <text class="text">{{temperature.now.cond_txt}}</text>
+            <image wx:if="{{temperature.now.cond_code}}" class="weathericon" src="cloud://weather-xgmvn.7765-weather-xgmvn-1258005200/weathericon/{{temperature.now.cond_code}}.png"></image>
+        </view>
+        <view class="tmp">{{temperature.now.tmp}}℃</view>
+        <view class="loc">{{temperature.update.loc}}</view>
+    </view>
+</view>
