@@ -7,7 +7,10 @@ cloud.init({
 const db = cloud.database() 
 
 exports.main = async (event, context) => {
-     return db.collection('nickName').doc("e3ca065c-744d-4c0d-a47b-015a0d41ce6c").get({
+     return db.collection('nickName').doc("e3ca065c-744d-4c0d-a47b-015a0d41ce6c").update({
+       data:{
+         imgurl:event.imgurl
+       },
         success: function(res) {
           // res.data 包含该记录的数据
           console.log(res.data)
