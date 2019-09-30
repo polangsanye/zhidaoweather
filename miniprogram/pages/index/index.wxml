@@ -4,7 +4,7 @@
        <image class="bgmimg" src="{{mylover}}" mode="aspectFill"></image>
     </view>
     <view class="topinfo">
-       <!-- <image class="zhi" src="cloud://weather-xgmvn.7765-weather-xgmvn/people/zhi.jpg"></image> -->
+       <image class="zhi" src="cloud://weather-xgmvn.7765-weather-xgmvn/people/zhi.jpg"></image>
     </view>
     <audio class="myvideo" poster="{{poster}}" name="{{name}}" author="{{author}}" src="{{src}}" id="myAudio" controls loop autoPlay></audio>
 
