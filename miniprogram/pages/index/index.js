@@ -10,7 +10,7 @@ Page({
     name: '此时此刻',
     author: '许巍',
     src: 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E06DCBDC9AB7C49FD713D632D313AC4858BACB8DDD29067D3C601481D36E62053BF8DFEAF74C0A5CCFADD6471160CAF3E6A&fromtag=46',
-    mylover: 'cloud://weather-xgmvn.7765-weather-xgmvn-1258005200/my-lover.jpg'
+    mylover: ''
   },
 
   /**
@@ -35,8 +35,9 @@ Page({
       name: 'getlover',
       // 传给云函数的参数
       success: res=>{
+        console.log('获取图片成功',res)
         this.setData({
-          mylover:res.data.imgurl
+          mylover:res.result.data.imgurl
         })
       },
       fail: console.error
@@ -81,7 +82,7 @@ Page({
               },
               success: function (res) {
                 console.log(res)
-                _this.mylover()
+                _this.getmylover()
               },
               fail: console.error
             })
