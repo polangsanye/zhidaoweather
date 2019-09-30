@@ -70,19 +70,19 @@ Page({
             // app.globalData.cloudPath = cloudPath;
             // app.globalData.imagePath = filePath;
 
+            // https://7765-weather-xgmvn-1258005200.tcb.qcloud.la/my-lover.jpg
             _this.setData({
-              mylover: filePath
+              mylover: `https://7765-weather-xgmvn-1258005200.tcb.qcloud.la/${cloudPath}?t=${new Date().getTime()}`
             });
             wx.cloud.callFunction({
               // 云函数名称
               name: 'sum',
               // 传给云函数的参数
               data: {
-                imgurl: filePath
+                imgurl:`https://7765-weather-xgmvn-1258005200.tcb.qcloud.la/${cloudPath}?t=${new Date().getTime()}`
               },
               success: function (res) {
                 console.log(res)
-                _this.getmylover()
               },
               fail: console.error
             })
