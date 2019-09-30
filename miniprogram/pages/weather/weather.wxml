@@ -1,5 +1,6 @@
 <!-- miniprogram/pages/weather/weather.wxml -->
 <view class="weatherwrap">
+    <view wx:if="{{temperature.now}}">
     <view class="location">{{temperature.basic.location}}·{{temperature.basic.cnty}}</view>
     <view class="tmpinfo">
         <view class="cond_txt">
@@ -10,4 +11,5 @@
         <view class="loc">{{temperature.update.loc}}</view>
     </view>
     <view bindtap="gosurprise" class="surprise">PRESENT</view>
+    </view>
 </view>

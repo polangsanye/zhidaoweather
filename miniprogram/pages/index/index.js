@@ -65,7 +65,7 @@ Page({
             // app.globalData.imagePath = filePath;
 
             _this.setData({
-              mylover:res.fileID
+              mylover:res.fileID+"?time="+new Date()
             });
 
           },
