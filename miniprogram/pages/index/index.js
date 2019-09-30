@@ -38,7 +38,6 @@ Page({
         this.setData({
           mylover:res.data.imgurl
         })
-        this.mylover
       },
       fail: console.error
     })
