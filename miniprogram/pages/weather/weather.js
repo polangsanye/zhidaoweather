@@ -6,13 +6,15 @@ Page({
    */
   data: {
     temperature: {},
+    latitude: '',
+    longitude: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.requestData()
+    
   },
 
   /**
@@ -26,27 +28,55 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that=this;
+    wx.getSetting({
+      success(res) { // 查看所有权限
+        let status = res.authSetting['scope.userLocation']
+        if (!status) {
+          wx.authorize({
+            scope: 'scope.userLocation',
+            success:function() {
+             that.mylocation()
+            }
+          })
+        }else{
+          that.mylocation()
+        }
+      }
+    })
   },
-  requestData() {
-    let _this = this;
+  mylocation:function(){
+    wx.getLocation({
+      type: 'gcj02',
+      success:res=>{
+        this.setData({
+          latitude: res.latitude,
+          longitude: res.longitude
+        })
+        this.requestData()
+      }
+    })
+  },
+  requestData:function() {
+    console.log(44,this.data.longitude,this.data.latitude,this.data.myname)
     wx.request({
-      url: "https://free-api.heweather.net/s6/weather/now?location=beijing&key=e3d066620f0245bcb7e8425f18f333c4",
+      url: `https://free-api.heweather.net/s6/weather/now?location=${this.data.longitude},${this.data.latitude}&key=e3d066620f0245bcb7e8425f18f333c4`,
       header: {
         'content-type': 'application/json' // 默认值
       },
-      success: function (e) {
-        let {
-          data,
-          statusCode
-        } = e;
+      success:e=>{
+        let {data,statusCode} = e;
         if (statusCode == "200") {
-          _this.setData({
+          this.setData({
             temperature: data.HeWeather6[0]
           })
         }
-        console.log(e)
       }
+    })
+  },
+  gosurprise: function () {
+    wx.navigateTo({
+      url: "../index/index"
     })
   },
   /**
