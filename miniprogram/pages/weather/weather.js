@@ -58,7 +58,6 @@ Page({
     })
   },
   requestData:function() {
-    console.log(44,this.data.longitude,this.data.latitude,this.data.myname)
     wx.request({
       url: `https://free-api.heweather.net/s6/weather/now?location=${this.data.longitude},${this.data.latitude}&key=e3d066620f0245bcb7e8425f18f333c4`,
       header: {

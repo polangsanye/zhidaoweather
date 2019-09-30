@@ -45,6 +45,14 @@ page{
     width: 100%;
     text-align: center;
 }
+.changebg{
+    position: fixed;
+    right: 10rpx;
+    bottom: 10rpx;
+    padding: 10rpx;
+    color: #ffffff;
+    font-size: 30rpx;
+}
 @keyframes rotateinfinet {
     0%{
       transform: rotate(0deg)

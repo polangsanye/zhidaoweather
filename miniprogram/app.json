@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/weather/weather",
     "pages/index/index",
     "pages/demo/index",
     "pages/userConsole/userConsole",
@@ -13,8 +14,7 @@
     "pages/openapi/callback/callback",
     "pages/openapi/cloudid/cloudid",
     "pages/im/im",
-    "pages/im/room/room",
-    "pages/weather/weather"
+    "pages/im/room/room"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

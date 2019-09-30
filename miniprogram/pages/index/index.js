@@ -10,13 +10,23 @@ Page({
     name: '此时此刻',
     author: '许巍',
     src: 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E06DCBDC9AB7C49FD713D632D313AC4858BACB8DDD29067D3C601481D36E62053BF8DFEAF74C0A5CCFADD6471160CAF3E6A&fromtag=46',
+    mylover:'cloud://weather-xgmvn.7765-weather-xgmvn-1258005200/my-lover.jpg'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // wx.cloud.downloadFile({
+    //   fileID: 'cloud://weather-xgmvn.7765-weather-xgmvn-1258005200/my-image.png',
+    //   success: res => {
+    //     // get temp file path
+    //     console.log(res.tempFilePath)
+    //   },
+    //   fail: err => {
+    //     console.log(err)
+    //   }
+    // })
   },
 
   /**
@@ -27,7 +37,56 @@ Page({
     this.audioCtx = wx.createAudioContext('myAudio');
     this.audioCtx.play()
   },
+   // 上传图片
+   doUpload: function () {
+    // 选择图片
+    var _this=this;
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['compressed'],
+      sourceType: ['album', 'camera'],
+      success: function (res) {
 
+        wx.showLoading({
+          title: '上传中',
+        })
+        console.log(res)
+        const filePath = res.tempFilePaths[0]
+        
+        // 上传图片
+        const cloudPath = 'my-lover' + filePath.match(/\.[^.]+?$/)[0]
+        wx.cloud.uploadFile({
+          cloudPath,
+          filePath,
+          success: res => {
+            console.log('[上传文件] 成功：', res)
+            // app.globalData.fileID = res.fileID
+            // app.globalData.cloudPath = cloudPath;
+            // app.globalData.imagePath = filePath;
+
+            _this.setData({
+              mylover:res.fileID
+            });
+
+          },
+          fail: e => {
+            console.error('[上传文件] 失败：', e)
+            wx.showToast({
+              icon: 'none',
+              title: '上传失败',
+            })
+          },
+          complete: () => {
+            wx.hideLoading()
+          }
+        })
+
+      },
+      fail: e => {
+        console.error(e)
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */
